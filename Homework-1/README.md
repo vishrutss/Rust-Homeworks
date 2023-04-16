@@ -12,7 +12,7 @@ The implementation uses a loop to calculate the value of the modular exponentiat
 
 The code also includes an error() function that prints a usage error message and exits the program, a parsenum() function that parses a string as a u64 or prints an error message, and a test_modexp() function for testing the correctness of the modular exponentiation function using various test cases.
 
-The following pseudocode was used to create the program. Link: https://en.wikipedia.org/wiki Modular_exponentiation#Right-to-left_binary_method
+The following pseudocode was used to create the program. Link: https://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method
 
     modexp(x, y, m):
         if m = 0 or (m - 1)2 would overflow
