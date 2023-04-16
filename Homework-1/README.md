@@ -14,18 +14,18 @@ The code also includes an error() function that prints a usage error message and
 
 The following pseudocode was used to create the program. Link: https://en.wikipedia.org/wiki Modular_exponentiation#Right-to-left_binary_method
 
-modexp(x, y, m):
-    if m = 0 or (m - 1)2 would overflow
-        fail
-    if m = 1
-        return 0
-    z ← 1
-    while y > 0
-        if y mod 2 == 1
-            z ← (z x) mod m
-        y ← y div 2
-        x ← x2 mod m
-    return z
+    modexp(x, y, m):
+        if m = 0 or (m - 1)2 would overflow
+            fail
+        if m = 1
+            return 0
+        z ← 1
+        while y > 0
+            if y mod 2 == 1
+                z ← (z x) mod m
+            y ← y div 2
+            x ← x2 mod m
+        return z
 
 ## Usage
 To compute modexp(2,20,17) we can invoke the calculator with
