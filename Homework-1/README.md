@@ -1,6 +1,6 @@
 # Homework 1
-## Name
-Modular Exponentiation
+
+## Modular Exponentiation
 
 ## Submitted by
 Vishrut Sharma
