@@ -50,3 +50,7 @@ The following tests were used to test the program
       //    modular-exponentiation-for-large-numbers/0
       assert_eq!(4, modexp(10, 9, 6));
       assert_eq!(34, modexp(450, 768, 517));
+
+## Sources
+1) Got the syntax to use command line arguments from: https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
+2) Found usage of checked_mul from: https://docs.rs/num/latest/num/trait.CheckedMul.html
