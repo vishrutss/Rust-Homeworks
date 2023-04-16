@@ -1,6 +1,6 @@
-# Rust-Homeworks
+# Homework 1
 ## Name
-Homework 1: Modular Exponentiation
+Modular Exponentiation
 
 ## Submitted by
 Vishrut Sharma
@@ -15,7 +15,7 @@ The code also includes an error() function that prints a usage error message and
 The following pseudocode was used to create the program. Link: https://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method
 
     modexp(x, y, m):
-        if m = 0 or (m - 1)2 would overflow
+        if m = 0 or (m - 1)^2 would overflow
             fail
         if m = 1
             return 0
@@ -24,7 +24,7 @@ The following pseudocode was used to create the program. Link: https://en.wikipe
             if y mod 2 == 1
                 z ← (z x) mod m
             y ← y div 2
-            x ← x2 mod m
+            x ← x^2 mod m
         return z
 
 ## Usage
