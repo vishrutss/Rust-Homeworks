@@ -2,9 +2,9 @@
 //!
 //! Vishrut Sharma 2023
 
-// I have collaborated with Shrikrishna Bhat for this Homework
+/// I have collaborated with Shrikrishna Bhat for this Homework
 
-// Main function
+/// Main function
 fn main() {
     // Got the syntax to use command line arguments from:
     // https://doc.rust-lang.org/book/ch12-01-accepting-command-line-arguments.html
@@ -24,7 +24,7 @@ fn main() {
     print!("The result is {}", result);
 }
 
-// Function to calculate an exponential modulo
+/// Function to calculate an exponential modulo
 fn modexp(x: u64, y: u64, m: u64) -> u64 {
     let bigm = u128::from(m);
 
@@ -60,7 +60,7 @@ fn parsenum(s: &str) -> u64 {
     s.parse().unwrap_or_else(|_| error())
 }
 
-// Test function
+/// Test function
 #[test]
 fn test_modexp() {
     // Largest prime less than 2**64.
