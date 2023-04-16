@@ -5,6 +5,9 @@ Modular Exponentiation
 ## Submitted by
 Vishrut Sharma
 
+## Collaborations
+Collaborated with Shrikrishna Bhat
+
 ## Description
 This code is a command-line tool for performing modular exponentiation. The main() function takes command line arguments (three values for the base, exponent, and modulo) and then calls the modexp() function to perform the modular exponentiation calculation. The modexp() function calculates the value of x raised to the power of y, modulo m.
 
