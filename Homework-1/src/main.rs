@@ -30,7 +30,7 @@ fn modexp(x: u64, y: u64, m: u64) -> u64 {
 
     // Found usage of checked_mul here: https://docs.rs/num/latest/num/trait.CheckedMul.html
     if bigm == 0 || (bigm - 1).checked_mul(2).is_none() {
-        panic!("Error")
+        error()
     }
 
     if m == 1 {
