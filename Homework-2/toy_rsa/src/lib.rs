@@ -1,3 +1,9 @@
+//! Toy RSA library
+//!
+//! Vishrut Sharma 2023
+
+/// I have collaborated with Shrikrishna Bhat for this Homework
+
 use toy_rsa_lib::*;
 
 /// Fixed RSA encryption exponent.
@@ -8,7 +14,7 @@ pub const EXP: u64 = 65_537;
 pub fn genkey() -> (u32, u32) {
     let mut p: u64 = rsa_prime().into();
     let mut q: u64 = rsa_prime().into();
-    while lambda(p, q) <= EXP && gcd(EXP, lambda(p, q)) != 1 {
+    while lambda(p, q) <= EXP || gcd(EXP, lambda(p, q)) != 1 {
         p = rsa_prime().into();
         q = rsa_prime().into();
     }
