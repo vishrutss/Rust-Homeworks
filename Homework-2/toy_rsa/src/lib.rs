@@ -3,7 +3,6 @@
 //! Vishrut Sharma 2023
 
 /// I have collaborated with Shrikrishna Bhat for this Homework
-
 use toy_rsa_lib::*;
 
 /// Fixed RSA encryption exponent.
@@ -30,14 +29,14 @@ pub fn encrypt(key: u64, msg: u32) -> u64 {
 /// Decrypt the cipertext `msg` using the RSA private `key`
 /// and return the resulting plaintext.
 pub fn decrypt(key: (u32, u32), msg: u64) -> u32 {
-    let d:u64 = modinverse(EXP, lambda(key.0.into(), key.1.into()));
-    let pub_key:u64=u64::from(key.0) * u64::from(key.1);
+    let d: u64 = modinverse(EXP, lambda(key.0.into(), key.1.into()));
+    let pub_key: u64 = u64::from(key.0) * u64::from(key.1);
     modexp(msg, d, pub_key).try_into().unwrap()
 }
 
 /// Lambda function returning LCM of 2 numbers
 pub fn lambda(p: u64, q: u64) -> u64 {
-    lcm(p-1, q-1)
+    lcm(p - 1, q - 1)
 }
 
 #[cfg(test)]
@@ -46,12 +45,12 @@ mod tests {
 
     #[test]
     fn it_works() {
-        let p:u32=0xed23e6cd;
-        let q:u32=0xf050a04d;
-        let pub_key:u64=0xde9c5816141c8ba9;
-        let msg:u32=0x12345f;
-        let key_pair=(p,q);
-        assert_eq!(encrypt(pub_key,msg),0x6418280e0c4d7675);
-        assert_eq!(decrypt(key_pair,0x6418280e0c4d7675),0x12345f);
+        let p: u32 = 0xed23e6cd;
+        let q: u32 = 0xf050a04d;
+        let pub_key: u64 = 0xde9c5816141c8ba9;
+        let msg: u32 = 0x12345f;
+        let key_pair = (p, q);
+        assert_eq!(encrypt(pub_key, msg), 0x6418280e0c4d7675);
+        assert_eq!(decrypt(key_pair, 0x6418280e0c4d7675), 0x12345f);
     }
 }
