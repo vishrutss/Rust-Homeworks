@@ -38,11 +38,13 @@ fn parsenum(s: &str) -> u32 {
 fn test_rsa() {
     // Got the idea to use a random number generator from seeing a message from Lee Hoang on Zulip
     // Got some help from ChatGPT on the usage of the random number generator
-    let mut rng = rand::thread_rng();
-    let msg: u32 = rng.gen();
-    let key = genkey();
-    assert_eq!(
-        decrypt(key, encrypt(u64::from(key.0) * u64::from(key.1), msg)),
-        msg
-    );
+    for _ in 0..50{
+        let mut rng = rand::thread_rng();
+        let msg: u32 = rng.gen();
+        let key = genkey();
+        assert_eq!(
+            decrypt(key, encrypt(u64::from(key.0) * u64::from(key.1), msg)),
+            msg
+        );
+    }
 }
