@@ -2,6 +2,7 @@
 //!
 //! Vishrut Sharma 2023
 
+use rand::Rng;
 use toy_rsa::*;
 
 /// Main function
@@ -30,4 +31,18 @@ fn error() -> ! {
 /// Parse the given string as a `u32`.
 fn parsenum(s: &str) -> u32 {
     s.parse().unwrap_or_else(|_| error())
+}
+
+/// Test function
+#[test]
+fn test_rsa() {
+    // Got the idea to use a random number generator from seeing a message from Lee Hoang on Zulip
+    // Got some help from ChatGPT on the usage of the random number generator
+    let mut rng = rand::thread_rng();
+    let msg: u32 = rng.gen();
+    let key = genkey();
+    assert_eq!(
+        decrypt(key, encrypt(u64::from(key.0) * u64::from(key.1), msg)),
+        msg
+    );
 }

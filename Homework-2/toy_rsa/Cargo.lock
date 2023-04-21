@@ -137,6 +137,7 @@ dependencies = [
 name = "toy_rsa"
 version = "0.1.0"
 dependencies = [
+ "rand",
  "toy_rsa_lib",
 ]
 
