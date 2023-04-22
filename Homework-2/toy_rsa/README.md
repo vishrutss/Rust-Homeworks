@@ -47,7 +47,7 @@ Available functions in the library crate:
 4) lambda(p: u64, q: u64) -> u64
 
 ## Testing
-For testing, I have implemented a command-line program that uses the functions defined in the library crate. The command-line program is located in ```examples/toyrsa.rs```. The program takes an input message from the user, encrypts the message, and displays the result. It then decrypts the ciphertext and displays the decrypted text. In the test section of the command-line program, I have implemented random testing using a random number generator that generates random messages which are then encrypted and decrypted.
+For testing, I have implemented a command-line program that uses the functions defined in the library crate and also created a separate file called ```random.rs``` that contains random testing. The command-line program is located in ```examples/toyrsa.rs```. The test program is located in ```tests/random.rs```. The program takes an input message from the user, encrypts the message, and displays the result. It then decrypts the ciphertext and displays the decrypted text. In the test program, I have implemented random testing using a random number generator that generates random messages which are then encrypted and decrypted.
 
 I got the idea to use a random number generator from seeing a message from Lee Hoang on Zulip. I implemented this test inside a for loop so that multiple tests could be run.
 
