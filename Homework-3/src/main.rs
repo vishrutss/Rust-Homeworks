@@ -27,7 +27,13 @@ use prompted::input;
 ///    #....
 ///
 fn show_posn(posn: &Chomp) {
-    todo!()
+    for r in 0..posn.nrows{
+        for c in 0..posn.ncols{
+            let state= if posn.board[r][c] {"#"} else {"."};
+            print!("{}",state);
+        }
+        println!();
+    }
 }
 
 /// Get a move from the human player. The human should
@@ -57,5 +63,27 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
 /// cargo run 3 4
 /// ```
 fn main() {
-    todo!()
+    let args: Vec<String> = std::env::args().collect();
+    if args.len() != 3 {
+        error()
+    }
+    let val1 = &args[1];
+    let val2 = &args[2];
+
+    let r = parsenum(val1);
+    let c = parsenum(val2);
+
+    let mut board=Chomp::new(r.try_into().unwrap(), c.try_into().unwrap());
+    show_posn(&board);
+}
+
+/// Print a usage error message and exit.
+fn error() -> ! {
+    eprintln!("chomp usage: chomp <num of rows> <num of columns>");
+    std::process::exit(1);
+}
+
+/// Parse the given string as a `u64`.
+fn parsenum(s: &str) -> u64 {
+    s.parse().unwrap_or_else(|_| error())
 }

@@ -68,8 +68,25 @@ impl Chomp {
     ///                 return the move r, c
     ///    return no winning move
     /// ```
-    pub fn winning_move(&self) -> Option<(usize, usize)> {
-        todo!()
+    pub fn winning_move(&mut self) -> Option<(usize, usize)> {
+        for r in 0..self.nrows{
+            for c in 0..self.ncols{
+                if r==0 && c==0{
+                    continue;
+                }
+                let p=self.board;
+                self.make_move(r, c);
+                let m=Chomp{
+                    nrows:self.nrows,
+                    ncols:self.ncols,
+                    board:p,
+                }.winning_move();
+                if m.is_none(){
+                    return Some((r,c));
+                }
+            }
+        }
+        None
     }
 }
 
