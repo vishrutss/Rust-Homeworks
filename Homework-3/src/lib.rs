@@ -41,13 +41,23 @@ impl Chomp {
             ncols,
             MAX_COLS
         );
-        todo!()
+        let mut board = [[true; MAX_COLS]; MAX_ROWS];
+        board[0][0] = false;
+        Self {
+            nrows,
+            ncols,
+            board,
+        }
     }
 
     /// Make a move on the current board, "eating" all cells
     /// below `row` and to the right of `col` inclusive.
     pub fn make_move(&mut self, row: usize, col: usize) {
-        todo!()
+        for r in row..self.nrows {
+            for c in col..self.ncols {
+                self.board[r][c] = false;
+            }
+        }
     }
 
     /// Returns `Some` winning move for this position as `(row, col)`.
@@ -69,20 +79,21 @@ impl Chomp {
     ///    return no winning move
     /// ```
     pub fn winning_move(&mut self) -> Option<(usize, usize)> {
-        for r in 0..self.nrows{
-            for c in 0..self.ncols{
-                if r==0 && c==0{
+        for r in 0..self.nrows {
+            for c in 0..self.ncols {
+                if r == 0 && c == 0 {
                     continue;
                 }
-                let p=self.board;
+                let p = self.board;
                 self.make_move(r, c);
-                let m=Chomp{
-                    nrows:self.nrows,
-                    ncols:self.ncols,
-                    board:p,
-                }.winning_move();
-                if m.is_none(){
-                    return Some((r,c));
+                let m = Chomp {
+                    nrows: self.nrows,
+                    ncols: self.ncols,
+                    board: p,
+                }
+                .winning_move();
+                if m.is_none() {
+                    return Some((r, c));
                 }
             }
         }

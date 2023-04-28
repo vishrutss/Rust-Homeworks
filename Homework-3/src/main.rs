@@ -27,10 +27,10 @@ use prompted::input;
 ///    #....
 ///
 fn show_posn(posn: &Chomp) {
-    for r in 0..posn.nrows{
-        for c in 0..posn.ncols{
-            let state= if posn.board[r][c] {"#"} else {"."};
-            print!("{}",state);
+    for r in 0..posn.nrows {
+        for c in 0..posn.ncols {
+            let state = if posn.board[r][c] { "#" } else { "." };
+            print!("{}", state);
         }
         println!();
     }
@@ -51,7 +51,7 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
 }
 
 /// Play a game, as described above.
-/// 
+///
 /// The program should take two command-line arguments
 /// representing the board size: a number of rows and a
 /// number of columns for the board. The program should fail
@@ -73,7 +73,7 @@ fn main() {
     let r = parsenum(val1);
     let c = parsenum(val2);
 
-    let mut board=Chomp::new(r.try_into().unwrap(), c.try_into().unwrap());
+    let mut board = Chomp::new(r.try_into().unwrap(), c.try_into().unwrap());
     show_posn(&board);
 }
 
