@@ -67,7 +67,7 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
         }
         Ok(v) => v,
     };
-    if row > posn.nrows || col > posn.ncols {
+    if row >= posn.nrows || col >= posn.ncols {
         println!(
             "Invalid move. Max rows: {} and Max cols: {}",
             posn.nrows, posn.ncols
@@ -105,10 +105,10 @@ fn main() {
     let c = parsenum(val2);
 
     let mut board = Chomp::new(r.try_into().unwrap(), c.try_into().unwrap());
+    show_posn(&board);
 
     loop {
         //Human's turn
-        show_posn(&board);
         let mv = user_move(&board);
         if mv == Some((0, 0)) {
             println!("You lose");
@@ -116,6 +116,7 @@ fn main() {
         }
         let Some((row, col))=mv else {continue;};
         board.make_move(row, col);
+        show_posn(&board);
     }
 }
 
