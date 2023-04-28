@@ -47,7 +47,38 @@ fn show_posn(posn: &Chomp) {
 /// returns `Some` row and column coordinates of the human
 /// move.
 fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
-    todo!()
+    let mv = input!("Enter move: ");
+    let row_col: Vec<_> = mv.split_whitespace().collect();
+    if row_col.len() != 2 {
+        println!("Wrong format!!");
+        return None;
+    }
+    let row: usize = match row_col[0].parse() {
+        Err(e) => {
+            println!("{}", e);
+            return None;
+        }
+        Ok(v) => v,
+    };
+    let col: usize = match row_col[1].parse() {
+        Err(e) => {
+            println!("{}", e);
+            return None;
+        }
+        Ok(v) => v,
+    };
+    if row > posn.nrows || col > posn.ncols {
+        println!(
+            "Invalid move. Max rows: {} and Max cols: {}",
+            posn.nrows, posn.ncols
+        );
+        return None;
+    }
+    if !posn.board[row][col] {
+        println!("Invalid move!!");
+        return None;
+    }
+    Some((row, col))
 }
 
 /// Play a game, as described above.
@@ -83,14 +114,14 @@ fn main() {
             println!("You lose");
             break;
         }
-        let Some((row, col))=mv else {panic!("Invalid move");};
+        let Some((row, col))=mv else {continue;};
         board.make_move(row, col);
     }
 }
 
 /// Print a usage error message and exit.
 fn error() -> ! {
-    eprintln!("chomp usage: chomp <num of rows> <num of columns>");
+    eprintln!("chomp usage: <num of rows> <num of columns>");
     std::process::exit(1);
 }
 
