@@ -85,7 +85,6 @@ impl Chomp {
                 }
                 let mut p = self.clone();
                 p.make_move(r, c);
-                println!("{} {}", r, c);
                 let m = p.winning_move();
                 if m.is_none() {
                     return Some((r, c));
