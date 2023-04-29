@@ -78,6 +78,9 @@ impl Chomp {
     ///    return no winning move
     /// ```
     pub fn winning_move(&mut self) -> Option<(usize, usize)> {
+        if self.check_winner() {
+            return None;
+        }
         for r in 0..self.nrows {
             for c in 0..self.ncols {
                 if r == 0 && c == 0 {
@@ -92,6 +95,20 @@ impl Chomp {
             }
         }
         None
+    }
+
+    pub fn check_winner(&self) -> bool {
+        for r in 0..self.nrows {
+            for c in 0..self.ncols {
+                if r == 0 && c == 0 {
+                    continue;
+                }
+                if self.board[r][c] {
+                    return false;
+                }
+            }
+        }
+        true
     }
 }
 
