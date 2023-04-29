@@ -117,6 +117,38 @@ fn main() {
         let Some((row, col))=mv else {continue;};
         board.make_move(row, col);
         show_posn(&board);
+
+        //Computer's turn
+        let cmv = board.winning_move();
+        let Some((row,col))=cmv else {continue};
+        println!("{} {}", row, col);
+        if cmv == Some((0, 0)) {
+            println!("You Win!");
+            break;
+        }
+        if cmv.is_none() {
+            for r in 0..board.nrows {
+                if !board.board[r][0] {
+                    for c in 0..board.ncols {
+                        if !board.board[r - 1][c] {
+                            board.make_move(r - 1, c - 1);
+                            break;
+                        }
+                    }
+                }
+                if r == board.nrows - 1 {
+                    for c in 0..board.ncols {
+                        if !board.board[r][c] {
+                            board.make_move(r, c - 1);
+                            break;
+                        }
+                    }
+                }
+            }
+        } else {
+            board.make_move(row, col);
+        }
+        show_posn(&board);
     }
 }
 

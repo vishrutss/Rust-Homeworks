@@ -41,8 +41,7 @@ impl Chomp {
             ncols,
             MAX_COLS
         );
-        let mut board = [[true; MAX_COLS]; MAX_ROWS];
-        board[0][0] = false;
+        let board = [[true; MAX_COLS]; MAX_ROWS];
         Self {
             nrows,
             ncols,
@@ -84,14 +83,10 @@ impl Chomp {
                 if r == 0 && c == 0 {
                     continue;
                 }
-                let p = self.board;
-                self.make_move(r, c);
-                let m = Chomp {
-                    nrows: self.nrows,
-                    ncols: self.ncols,
-                    board: p,
-                }
-                .winning_move();
+                let mut p = self.clone();
+                p.make_move(r, c);
+                println!("{} {}", r, c);
+                let m = p.winning_move();
                 if m.is_none() {
                     return Some((r, c));
                 }
