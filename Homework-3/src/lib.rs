@@ -87,6 +87,9 @@ impl Chomp {
                     continue;
                 }
                 let mut p = self.clone();
+                if !self.board[r][c] {
+                    continue;
+                }
                 p.make_move(r, c);
                 let m = p.winning_move();
                 if m.is_none() {

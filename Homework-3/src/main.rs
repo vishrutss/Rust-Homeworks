@@ -119,9 +119,9 @@ fn main() {
         show_posn(&board);
 
         //Computer's turn
+        println!("Computer's move");
         let cmv = board.winning_move();
         let Some((row,col))=cmv else {continue};
-        println!("{} {}", row, col);
         if cmv == Some((0, 0)) {
             println!("You Win!");
             break;
