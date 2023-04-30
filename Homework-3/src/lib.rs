@@ -78,7 +78,7 @@ impl Chomp {
     ///    return no winning move
     /// ```
     pub fn winning_move(&mut self) -> Option<(usize, usize)> {
-        if self.check_winner() {
+        if self.game_over() {
             return None;
         }
         for r in 0..self.nrows {
@@ -100,8 +100,8 @@ impl Chomp {
         None
     }
 
-    /// Function to check for the winning state on the board
-    pub fn check_winner(&self) -> bool {
+    /// Function to check if the game is over
+    pub fn game_over(&self) -> bool {
         if self.board[0][1] || self.board[1][0] {
             return false;
         }

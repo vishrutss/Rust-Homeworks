@@ -109,7 +109,7 @@ fn main() {
 
     loop {
         //Human's turn
-        if board.check_winner() {
+        if board.game_over() {
             println!("You lose");
             break;
         }
@@ -119,14 +119,14 @@ fn main() {
         show_posn(&board);
 
         //Computer's turn
-        println!("Computer's move");
         let cmv = board.winning_move();
         match cmv {
             Some((row, col)) => {
+                println!("Computer's move: {} {}", row, col);
                 board.make_move(row, col);
             }
             None => {
-                if board.check_winner() {
+                if board.game_over() {
                     println!("You win");
                     break;
                 }
@@ -134,6 +134,7 @@ fn main() {
                     if !board.board[r][0] {
                         for c in 0..board.ncols {
                             if !board.board[r - 1][c] {
+                                println!("Computer's move: {} {}", r - 1, c - 1);
                                 board.make_move(r - 1, c - 1);
                                 break;
                             }
@@ -142,6 +143,7 @@ fn main() {
                     if r == board.nrows - 1 {
                         for c in 0..board.ncols {
                             if !board.board[r][c] {
+                                println!("Computer's move: {} {}", r, c - 1);
                                 board.make_move(r, c - 1);
                                 break;
                             }
