@@ -109,11 +109,11 @@ fn main() {
 
     loop {
         //Human's turn
-        let mv = user_move(&board);
-        if mv == Some((0, 0)) {
+        if board.check_winner() {
             println!("You lose");
             break;
         }
+        let mv = user_move(&board);
         let Some((row, col))=mv else {continue;};
         board.make_move(row, col);
         show_posn(&board);
@@ -121,32 +121,34 @@ fn main() {
         //Computer's turn
         println!("Computer's move");
         let cmv = board.winning_move();
-        let Some((row,col))=cmv else {continue};
-        if cmv == Some((0, 0)) {
-            println!("You Win!");
-            break;
-        }
-        if cmv.is_none() {
-            for r in 0..board.nrows {
-                if !board.board[r][0] {
-                    for c in 0..board.ncols {
-                        if !board.board[r - 1][c] {
-                            board.make_move(r - 1, c - 1);
-                            break;
+        match cmv {
+            Some((row, col)) => {
+                board.make_move(row, col);
+            }
+            None => {
+                if board.check_winner() {
+                    println!("You win");
+                    break;
+                }
+                for r in 0..board.nrows {
+                    if !board.board[r][0] {
+                        for c in 0..board.ncols {
+                            if !board.board[r - 1][c] {
+                                board.make_move(r - 1, c - 1);
+                                break;
+                            }
                         }
                     }
-                }
-                if r == board.nrows - 1 {
-                    for c in 0..board.ncols {
-                        if !board.board[r][c] {
-                            board.make_move(r, c - 1);
-                            break;
+                    if r == board.nrows - 1 {
+                        for c in 0..board.ncols {
+                            if !board.board[r][c] {
+                                board.make_move(r, c - 1);
+                                break;
+                            }
                         }
                     }
                 }
             }
-        } else {
-            board.make_move(row, col);
         }
         show_posn(&board);
     }

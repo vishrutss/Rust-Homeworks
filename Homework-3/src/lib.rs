@@ -102,7 +102,7 @@ impl Chomp {
 
     /// Function to check for the winning state on the board
     pub fn check_winner(&self) -> bool {
-        if self.board[0][1] || self.board[1][0]{
+        if self.board[0][1] || self.board[1][0] {
             return false;
         }
         true
