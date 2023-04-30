@@ -100,16 +100,10 @@ impl Chomp {
         None
     }
 
+    /// Function to check for the winning state on the board
     pub fn check_winner(&self) -> bool {
-        for r in 0..self.nrows {
-            for c in 0..self.ncols {
-                if r == 0 && c == 0 {
-                    continue;
-                }
-                if self.board[r][c] {
-                    return false;
-                }
-            }
+        if self.board[0][1] || self.board[1][0]{
+            return false;
         }
         true
     }
