@@ -47,7 +47,10 @@ fn show_posn(posn: &Chomp) {
 /// returns `Some` row and column coordinates of the human
 /// move.
 fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
+    // move string taken from the user
     let mv = input!("Enter move: ");
+
+    // move string split into row and column
     let row_col: Vec<_> = mv.split_whitespace().collect();
     if row_col.len() != 2 {
         println!("Wrong format!!");
@@ -94,6 +97,7 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
 /// cargo run 3 4
 /// ```
 fn main() {
+    //command-line arguments representing the board size
     let args: Vec<String> = std::env::args().collect();
     if args.len() != 3 {
         error()
@@ -101,24 +105,27 @@ fn main() {
     let val1 = &args[1];
     let val2 = &args[2];
 
+    // Row and column
     let r = parsenum(val1);
     let c = parsenum(val2);
 
+    // Creating new board
     let mut board = Chomp::new(r.try_into().unwrap(), c.try_into().unwrap());
     show_posn(&board);
 
     loop {
-        //Human's turn
+        // Human's turn
         if board.game_over() {
             println!("You lose");
             break;
         }
+        // Human's move
         let mv = user_move(&board);
         let Some((row, col))=mv else {continue;};
         board.make_move(row, col);
         show_posn(&board);
 
-        //Computer's turn
+        // Computer's turn
         let cmv = board.winning_move();
         match cmv {
             Some((row, col)) => {
