@@ -69,13 +69,13 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
     };
     if row >= posn.nrows || col >= posn.ncols {
         println!(
-            "Invalid move. Max rows: {} and Max cols: {}",
+            "Invalid move!! Max rows: {} and Max cols: {}",
             posn.nrows, posn.ncols
         );
         return None;
     }
     if !posn.board[row][col] {
-        println!("Invalid move!!");
+        println!("Invalid move!! Section has already been consumed!");
         return None;
     }
     Some((row, col))
