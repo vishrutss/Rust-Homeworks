@@ -50,6 +50,7 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
     // move string taken from the user
     let mv = input!("Enter move: ");
 
+    // Referred the following link to get some help in parsing user moves: https://github.com/pdx-cs-rust/chomp
     // move string split into row and column
     let row_col: Vec<_> = mv.split_whitespace().collect();
     if row_col.len() != 2 {
@@ -172,4 +173,17 @@ fn error() -> ! {
 /// Parse the given string as a `u64`.
 fn parsenum(s: &str) -> u64 {
     s.parse().unwrap_or_else(|_| error())
+}
+
+#[test]
+/// Tests Chomp functions
+fn chomp_test() {
+    let mut b = Chomp::new(4, 5);
+    assert!(b.nrows == 4 && b.ncols == 5);
+    assert!(b.board[0][0]);
+    assert!(b.board[3][4]);
+    b.make_move(3, 3);
+    assert!(!b.board[3][3]);
+    assert!(b.board[0][3]);
+    assert!(b.board[3][0]);
 }

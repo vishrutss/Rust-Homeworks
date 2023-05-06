@@ -110,6 +110,7 @@ impl Chomp {
 }
 
 #[test]
+/// Tests winning move function
 fn test_winning_move() {
     let mut c = Chomp::new(2, 2);
     assert!(c.winning_move().is_some());
