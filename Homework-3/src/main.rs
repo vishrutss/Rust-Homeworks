@@ -78,6 +78,10 @@ fn user_move(posn: &Chomp) -> Option<(usize, usize)> {
         );
         return None;
     }
+    if row == 0 && col == 0 {
+        println!("Invalid move!! (0, 0) is the poisoned square!!");
+        return None;
+    }
     if !posn.board[row][col] {
         println!("Invalid move!! Section has already been consumed!");
         return None;
