@@ -30,7 +30,7 @@ In this program after the user makes a move the AI implements the Negamax algori
 # Challenges
 One of the major challenges while writing the code for the game was figuring out the base case for the ```winning-move()``` function. At first I forgot the base case and the program kept getting stuck in an infinite loop.
 
-Another challenge was writing the code for the computer's move in the ```main.rs``` file. At times the code got a little difficult to read and understand what was going on when the computer made a move.
+Another challenge was writing the code for the computer's move in the ```main.rs``` file. At times it got a little difficult to read the code and understand what was going on when the computer made a move.
 
 # Usage
 To play the game we need to provide the dimensions of the board via command line arguments in the format ```cargo run <row_size> <column_size>```.
