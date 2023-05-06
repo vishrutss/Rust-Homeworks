@@ -34,6 +34,7 @@ fn show_posn(posn: &Chomp) {
         }
         println!();
     }
+    println!();
 }
 
 /// Get a move from the human player. The human should
