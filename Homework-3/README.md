@@ -14,18 +14,18 @@ This code plays the game of chomp and provides a library containing a perfect AI
 
 In this program after the user makes a move the AI implements the Negamax algorithm (https://en.wikipedia.org/wiki/Negamax) to determine it's next move. The code implements recursion to calculate it's move. The base case of the recursion is the ```game_over()``` function which checks the board state to determine of the game is over. The AI follows the following pseudocode to make it's move:
     
-    ``` winning-move(posn):
-        for each remaining row r
-            for each remaining column c in r
-                if r = 0 and c = 0
-                    continue
-                p ← copy of posn
-                chomp r, c from p
-                m ← winning-move(p)
-                if no winning move is returned
-                    return the move r, c
-        return no winning move
-    ```
+``` winning-move(posn):
+    for each remaining row r
+        for each remaining column c in r
+            if r = 0 and c = 0
+                continue
+            p ← copy of posn
+            chomp r, c from p
+            m ← winning-move(p)
+            if no winning move is returned
+                return the move r, c
+    return no winning move
+```
 
 # Challenges
 One of the major challenges while writing the code for the game was figuring out the base case for the ```winning-move()``` function. At first I forgot the base case and the program kept getting stuck in an infinite loop.
@@ -47,27 +47,29 @@ After creating the board enter move. After the user's move the AI will make it's
 # Testing
 The following tests were used to test the program
 
-    ```
-    /// Tests winning move function 
-    fn test_winning_move() {
-        let mut c = Chomp::new(2, 2);
-        assert!(c.winning_move().is_some());
-        c.make_move(1, 1);
-        assert!(c.winning_move().is_none());
-    }```
+```
+/// Tests winning move function 
+fn test_winning_move() {
+    let mut c = Chomp::new(2, 2);
+    assert!(c.winning_move().is_some());
+    c.make_move(1, 1);
+    assert!(c.winning_move().is_none());
+}
+```
 
-    ```
-    /// Tests Chomp functions
-    fn chomp_test() {
-        let mut b = Chomp::new(4, 5);
-        assert!(b.nrows==4 && b.ncols==5);
-        assert!(b.board[0][0]);
-        assert!(b.board[3][4]);
-        b.make_move(3, 3);
-        assert!(!b.board[3][3]);
-        assert!(b.board[0][3]);
-        assert!(b.board[3][0]);
-    }```
+```
+/// Tests Chomp functions
+fn chomp_test() {
+    let mut b = Chomp::new(4, 5);
+    assert!(b.nrows==4 && b.ncols==5);
+    assert!(b.board[0][0]);
+    assert!(b.board[3][4]);
+    b.make_move(3, 3);
+    assert!(!b.board[3][3]);
+    assert!(b.board[0][3]);
+    assert!(b.board[3][0]);
+}
+```
 
 # Sources
 
