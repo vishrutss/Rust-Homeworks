@@ -29,7 +29,7 @@ use prompted::input;
 fn show_posn(posn: &Chomp) {
     for r in 0..posn.nrows {
         for c in 0..posn.ncols {
-            let state = if posn.board[r][c] { "#" } else { "." };
+            let state = if posn.board[r][c] { "# " } else { ". " };
             print!("{}", state);
         }
         println!();
@@ -143,13 +143,14 @@ fn main() {
                     println!("You win");
                     break;
                 }
-                for r in 0..board.nrows {
+                // Chat GPT recommended use of labels to break out of nested loops
+                'outer: for r in 0..board.nrows {
                     if !board.board[r][0] {
                         for c in 0..board.ncols {
                             if !board.board[r - 1][c] {
                                 println!("Computer's move: {} {}", r - 1, c - 1);
                                 board.make_move(r - 1, c - 1);
-                                break;
+                                break 'outer;
                             }
                         }
                     }
@@ -158,7 +159,7 @@ fn main() {
                             if !board.board[r][c] {
                                 println!("Computer's move: {} {}", r, c - 1);
                                 board.make_move(r, c - 1);
-                                break;
+                                break 'outer;
                             }
                         }
                     }
