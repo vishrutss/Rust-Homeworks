@@ -1,4 +1,4 @@
-# Chomp Skeleton
+# Chomp - Homework 3
 Vishrut Sharma and Bart Massey 2023
 
 This code plays the game of
