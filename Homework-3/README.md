@@ -77,6 +77,7 @@ fn chomp_test() {
 2) Referred the following link to get some help in parsing user moves: https://github.com/pdx-cs-rust/chomp
 3) Chomp wikipedia link: https://en.wikipedia.org/wiki/Chomp
 4) Interactive Chomp game to help understand the rules: https://www.math.ucla.edu/~tom/Games/chomp.html (Credit to Justin Greever who provided the link on Zulip)
+5) Used Chat GPT for minor syntax recommendations.
 
 # License
 
