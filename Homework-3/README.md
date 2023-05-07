@@ -12,7 +12,7 @@ Collaborated with Shrikrishna Bhat
 # Description
 This code plays the game of chomp and provides a library containing a perfect AI player, together with a command-line program to play against it. Chomp is a two-player strategy game played on a rectangular grid made up of smaller square cells, which can be thought of as the blocks of a chocolate bar. The players take it in turns to choose one block and "eat it" (remove from the board), together with those that are below it and to its right. The top left block is "poisoned" and the player who eats this loses (https://en.wikipedia.org/wiki/Chomp).
 
-In this program after the user makes a move the AI implements the Negamax algorithm (https://en.wikipedia.org/wiki/Negamax) to determine it's next move. The code implements recursion to calculate it's move. The base case of the recursion is the ```game_over()``` function which checks the board state to determine of the game is over. The AI follows the following pseudocode to make it's move:
+In this program after the user makes a move the AI implements the Negamax algorithm (https://en.wikipedia.org/wiki/Negamax) to determine it's next move. The code implements recursion to calculate it's move. The base case of the recursion is the ```game_over()``` function which checks the board state to determine if the game is over. If the AI has no winning move, it goes to the last available row and eats the last available square in that row. The AI follows the following pseudocode to make it's move:
     
 ``` winning-move(posn):
     for each remaining row r
