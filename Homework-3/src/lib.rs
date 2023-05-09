@@ -102,13 +102,15 @@ impl Chomp {
 
     /// Function to check if the game is over.
     ///
-    /// If there is just 1 row we just need to check square `(0,1)` to check if the game is over.
+    /// If the board is of size 1x1 then the game is over since only the poisoned square is on the board.
+    /// If there is 1 row and multiple columns we need to check square `(0,1)` to check if the game is over.
+    /// If there is 1 column and multiple rows we need to check square `(1,0)` to check if the game is over.
     ///
-    /// If there is just 1 column we need to check square `(1,0)` to check if the game is over.
-    ///
-    /// If there are more than 1 row and 1 column we just need to check squares `(0,1)` and `(1,0)` to check if the game is over.
+    /// If there are multiple rows and columns we just need to check squares `(0,1)` and `(1,0)` to check if the game is over.
     pub fn game_over(&self) -> bool {
-        if self.nrows == 1 {
+        if self.nrows == 1 && self.ncols == 1 {
+            return true;
+        } else if self.nrows == 1 {
             if self.board[0][1] {
                 return false;
             }
