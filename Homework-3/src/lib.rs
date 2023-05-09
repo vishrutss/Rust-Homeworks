@@ -101,6 +101,12 @@ impl Chomp {
     }
 
     /// Function to check if the game is over.
+    ///
+    /// If there is just 1 row we just need to check square `(0,1)` to check if the game is over.
+    ///
+    /// If there is just 1 column we need to check square `(1,0)` to check if the game is over.
+    ///
+    /// If there are more than 1 row and 1 column we just need to check squares `(0,1)` and `(1,0)` to check if the game is over.
     pub fn game_over(&self) -> bool {
         if self.nrows == 1 {
             if self.board[0][1] {
