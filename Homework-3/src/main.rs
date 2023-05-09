@@ -188,8 +188,8 @@ fn chomp_test() {
     assert!(b.nrows == 4 && b.ncols == 5);
     assert!(b.board[0][0]);
     assert!(b.board[3][4]);
-    b.make_move(3, 3);
+    b.make_move(1, 1);
     assert!(!b.board[3][3]);
-    assert!(b.board[0][3]);
-    assert!(b.board[3][0]);
+    assert!(!b.board[1][3]);
+    assert!(!b.board[3][2]);
 }
