@@ -100,9 +100,17 @@ impl Chomp {
         None
     }
 
-    /// Function to check if the game is over
+    /// Function to check if the game is over.
     pub fn game_over(&self) -> bool {
-        if self.board[0][1] || self.board[1][0] {
+        if self.nrows == 1 {
+            if self.board[0][1] {
+                return false;
+            }
+        } else if self.ncols == 1 {
+            if self.board[1][0] {
+                return false;
+            }
+        } else if self.board[0][1] || self.board[1][0] {
             return false;
         }
         true
